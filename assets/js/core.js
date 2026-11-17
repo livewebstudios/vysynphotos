@@ -206,13 +206,22 @@
         start: 'top 86%',
         once: true,
         onEnter: function (batch) {
-          batch.forEach(function (el, i) {
+          /* After a jump (an in-page link, a fast flick), anything already above the screen
+             just shows. Only what is on screen gets the staggered entrance. */
+          var i = 0;
+          batch.forEach(function (el) {
             var kind = el.dataset.reveal;
-            var to = { opacity: 1, x: 0, y: 0, duration: DUR[kind], ease: 'power3.out', overwrite: 'auto' };
-            to.delay = i * 0.08 + (parseFloat(el.dataset.revealDelay) || 0) / 1000;
+            var done = function () { gsap.set(el, { clearProps: 'transform,clipPath' }); el.classList.add('is-revealed'); };
+            if (el.getBoundingClientRect().bottom < 0) {
+              gsap.set(el, { opacity: 1 });
+              done();
+              return;
+            }
+            var to = { opacity: 1, x: 0, y: 0, duration: DUR[kind], ease: 'power3.out', overwrite: 'auto', onComplete: done };
+            to.delay = Math.min(i, 8) * 0.08 + (parseFloat(el.dataset.revealDelay) || 0) / 1000;
             if (kind === 'clip' || kind === 'wipe') { to.clipPath = 'inset(0% 0% 0% 0%)'; to.ease = 'power3.inOut'; }
-            to.onComplete = function () { gsap.set(el, { clearProps: 'transform,clipPath' }); el.classList.add('is-revealed'); };
             gsap.to(el, to);
+            i += 1;
           });
         }
       });
