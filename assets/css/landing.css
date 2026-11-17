@@ -1,0 +1,75 @@
+/* Landing page. Simple. It gets out of the way. */
+
+:root {
+  --font-text: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --col: 1080px;
+  --label-size: 12px;
+  --label-track: 0.2em;
+  --shadow-print: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.landing {
+  background: var(--paper);
+  color: var(--text-on-light);
+  font-family: var(--font-text);
+  font-size: 17px;
+  line-height: 1.6;
+}
+a:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--vs-purple); }
+
+.page { width: 100%; max-width: calc(var(--col) + var(--pad) * 2); margin-inline: auto; padding: clamp(48px, 8vw, 104px) var(--pad) clamp(56px, 8vw, 112px); }
+
+.intro { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.intro-logo { width: 220px; }
+.label { margin-top: var(--s-7); font-size: var(--label-size); font-weight: 600; letter-spacing: var(--label-track); color: var(--vs-purple); }
+h1 { max-width: 16ch; margin-top: var(--s-4); font-weight: 500; font-size: clamp(36px, 5.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em; }
+h1 em { font-family: var(--font-display); font-style: italic; font-weight: 400; letter-spacing: 0; color: var(--vs-purple); }
+.intro-line { max-width: 52ch; margin-top: var(--s-5); color: var(--muted-on-light); }
+
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: clamp(48px, 7vw, 88px); }
+.card-item { animation: rise 0.9s var(--ease-out) both; }
+.card-item:nth-child(2) { animation-delay: 0.12s; }
+.card-item:nth-child(3) { animation-delay: 0.24s; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+
+.card { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line-on-light); background: var(--white); transition: transform 0.5s var(--ease-out), border-color 0.5s var(--ease-out); }
+.card:hover, .card:focus-visible { transform: translateY(-6px); border-color: var(--vs-purple); }
+.art { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; }
+.art img { transition: transform 0.9s var(--ease-out); }
+.card:hover .art img, .card:focus-visible .art img { transform: scale(1.03); }
+
+/* 01: ink panel, one white-bordered print, black and white */
+.art-noir { display: grid; place-items: center; background: var(--ink); }
+.art-print { display: block; width: 50%; border: 7px solid var(--bone); background: var(--bone); box-shadow: var(--shadow-print); }
+.art-print .ph { aspect-ratio: 2 / 3; }
+.art-print img { filter: grayscale(1) contrast(1.06); }
+
+/* 02: ink over paper, one tall photo, a Bodoni C behind it */
+.art-editorial { background: linear-gradient(var(--ink) 0 58%, var(--paper) 58% 100%); }
+.art-letter { position: absolute; left: 9%; top: -4%; font-family: var(--font-display); font-weight: 500; font-size: clamp(200px, 26vw, 300px); line-height: 1; color: var(--bone); }
+.art-tall { position: absolute; left: 50%; top: 12%; width: 42%; aspect-ratio: 1 / 2; border-radius: 12px; transform: translateX(-50%); }
+.art-tall img { object-position: 50% 12%; }
+
+/* 03: white panel, one look, purple along the bottom */
+.art-color { display: grid; place-items: center; background: var(--white); border-bottom: 1px solid var(--line-on-light); }
+.art-look { width: 50%; aspect-ratio: 2 / 3; margin-bottom: 14px; }
+.art-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: var(--vs-purple); }
+
+.card-body { display: flex; flex-direction: column; flex: 1; padding: var(--s-5); }
+.card-no { font-size: var(--label-size); font-weight: 600; letter-spacing: var(--label-track); color: var(--vs-purple); }
+.card-name { margin-top: var(--s-2); font-size: 22px; font-weight: 600; letter-spacing: 0.08em; line-height: 1.2; }
+.card-line { display: block; margin-top: var(--s-2); margin-bottom: var(--s-5); font-size: 16px; color: var(--muted-on-light); }
+.card-open { display: inline-flex; align-items: center; gap: var(--s-3); margin-top: auto; font-size: var(--label-size); font-weight: 600; letter-spacing: var(--label-track); color: var(--vs-purple); }
+.arrow { transition: transform 0.4s var(--ease-out); }
+.card:hover .arrow, .card:focus-visible .arrow { transform: translateX(6px); }
+
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-4) var(--s-5); padding: var(--s-6) var(--pad) var(--s-8); border-top: 1px solid var(--line-on-light); font-size: 14px; color: var(--muted-on-light); }
+.foot a { color: var(--vs-purple); text-decoration: underline; text-underline-offset: 3px; }
+.foot a:hover { color: var(--vs-purple-deep); }
+
+@media (max-width: 859.98px) {
+  .cards { grid-template-columns: 1fr; justify-items: center; }
+  .card-item { width: 100%; max-width: 420px; }
+  .art-letter { font-size: 280px; }
+}

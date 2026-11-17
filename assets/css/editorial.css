@@ -290,8 +290,8 @@ section { padding-block: var(--section); }
 .ticker-mark { width: 0.55em; height: 0.55em; margin-inline: 0.5em; font-size: clamp(32px, 5vw, 76px); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track { width: auto; animation: none; }
-  .ticker-set { flex-wrap: wrap; justify-content: center; row-gap: var(--s-2); padding-inline: var(--pad); }
+  .ticker-track { display: block; width: auto; animation: none; }
+  .ticker-set { flex: 1 1 auto; flex-wrap: wrap; justify-content: center; row-gap: var(--s-2); padding-inline: var(--pad); }
   .ticker-set[aria-hidden="true"] { display: none; }
   .ticker-item { font-size: clamp(24px, 3.4vw, 44px); }
   .ticker-mark { font-size: clamp(24px, 3.4vw, 44px); }

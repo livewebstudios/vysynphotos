@@ -166,7 +166,7 @@ section { padding-block: var(--section); }
   padding-block: var(--s-3);
   font-weight: 800;
   font-stretch: 125%;
-  font-size: clamp(24px, 6.6vw, 40px);
+  font-size: clamp(20px, 5.8vw, 40px);
   line-height: 1.05;
   transition: color 0.3s var(--ease-out);
 }
@@ -242,11 +242,20 @@ section { padding-block: var(--section); }
 .look-no { display: block; margin-bottom: var(--s-2); font-size: 11px; font-weight: 600; font-stretch: 110%; letter-spacing: var(--label-track); line-height: 1.4; }
 .runway-line { height: 2px; margin-top: var(--s-4); background: var(--vs-purple); }
 
+@media (max-width: 1239.98px) {
+  /* Not enough room beside the title: the aside drops under it. */
+  .hero-top { grid-template-columns: minmax(0, 1fr); grid-template-areas: "eyebrow" "title" "aside" "actions"; }
+  .hero-aside { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-6); align-items: baseline; margin-top: var(--s-4); }
+  .hero-intro { max-width: 62ch; margin-top: 0; }
+  .hero-actions { margin-top: var(--s-4); }
+}
 @media (max-width: 899.98px) {
   :root { --hero-size: min(calc((100vw - var(--pad) * 2) / 7.9), 120px); }
   .hero-top { grid-template-columns: minmax(0, 1fr); grid-template-areas: "eyebrow" "title" "aside" "actions"; }
   .hw { display: block; }
-  .hero-aside { margin-top: var(--s-5); }
+  .hero-aside { display: block; margin-top: var(--s-5); }
+  .hero-intro { margin-top: var(--s-2); }
+  .hero-actions { margin-top: var(--s-5); }
   .hero-tag { font-size: 20px; }
   .hero-intro { font-size: 16px; }
 }
