@@ -34,6 +34,14 @@
   --error-on-light: #B3261E;
   --error-on-dark: #FF9B93;
 
+  /* Motion scale: every CSS transition takes its duration from here */
+  --dur-0: 0.25s;
+  --dur-1: 0.3s;
+  --dur-2: 0.4s;
+  --dur-3: 0.5s;
+  --dur-4: 0.6s;
+  --dur-5: 0.7s;
+  --dur-6: 0.9s;
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --pad: clamp(20px, 5vw, 72px);
@@ -62,6 +70,8 @@
   --s-10: 128px;
   --section: clamp(72px, 11vw, 160px);
 
+  --demo-line: rgba(237, 232, 225, 0.28);
+  --demo-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
   --badge-w: 150px;
   --z-nav: 50;
   --z-menu: 60;
@@ -138,9 +148,9 @@ html.lenis, html.lenis body { height: auto; }
   overscroll-behavior: contain;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.4s var(--ease-out), visibility 0s linear 0.4s;
+  transition: opacity var(--dur-2) var(--ease-out), visibility 0s linear var(--dur-2);
 }
-.menu-open .menu { visibility: visible; opacity: 1; transition: opacity 0.4s var(--ease-out), visibility 0s; }
+.menu-open .menu { visibility: visible; opacity: 1; transition: opacity var(--dur-2) var(--ease-out), visibility 0s; }
 .menu-open, .menu-open body { overflow: hidden; }
 .nav-toggle { display: none; }
 @media (min-width: 1100px) {
@@ -175,11 +185,11 @@ html.lenis, html.lenis body { height: auto; }
   padding: 4px;
   border-radius: 999px;
   background: var(--ink);
-  border: 1px solid rgba(237, 232, 225, 0.28);
+  border: 1px solid var(--demo-line);
   font: 600 11px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--demo-shadow);
 }
 .demo-bar a {
   display: block;
@@ -187,14 +197,17 @@ html.lenis, html.lenis body { height: auto; }
   border-radius: 999px;
   color: var(--white);
   white-space: nowrap;
-  transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  transition: background-color var(--dur-0) var(--ease-out), color var(--dur-0) var(--ease-out);
 }
 .demo-bar a:hover { background: var(--ink-3); }
 .demo-bar a:focus-visible { box-shadow: var(--focus-on-dark); }
 .demo-bar a[aria-current="page"] { background: var(--white); color: var(--ink); }
 @media (max-width: 479.98px) {
   .demo-bar .demo-name { display: none; }
-  .demo-bar a { padding: 9px 12px; }
+  .demo-bar a { padding-inline: 12px; }
+}
+@media (pointer: coarse) {
+  .demo-bar a { min-width: 44px; padding-block: 17px; text-align: center; }
 }
 @media print {
   .demo-bar { display: none; }

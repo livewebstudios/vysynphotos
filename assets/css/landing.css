@@ -33,10 +33,10 @@ h1 em { font-family: var(--font-display); font-style: italic; font-weight: 400; 
 .card-item:nth-child(3) { animation-delay: 0.24s; }
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
 
-.card { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line-on-light); background: var(--white); transition: transform 0.5s var(--ease-out), border-color 0.5s var(--ease-out); }
+.card { display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line-on-light); background: var(--white); transition: transform var(--dur-3) var(--ease-out), border-color var(--dur-3) var(--ease-out); }
 .card:hover, .card:focus-visible { transform: translateY(-6px); border-color: var(--vs-purple); }
 .art { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; }
-.art img { transition: transform 0.9s var(--ease-out); }
+.art img { transition: transform var(--dur-6) var(--ease-out); }
 .card:hover .art img, .card:focus-visible .art img { transform: scale(1.03); }
 
 /* 01: ink panel, one white-bordered print, black and white */
@@ -61,7 +61,7 @@ h1 em { font-family: var(--font-display); font-style: italic; font-weight: 400; 
 .card-name { margin-top: var(--s-2); font-size: 22px; font-weight: 600; letter-spacing: 0.08em; line-height: 1.2; }
 .card-line { display: block; margin-top: var(--s-2); margin-bottom: var(--s-5); font-size: 16px; color: var(--muted-on-light); }
 .card-open { display: inline-flex; align-items: center; gap: var(--s-3); margin-top: auto; font-size: var(--label-size); font-weight: 600; letter-spacing: var(--label-track); color: var(--vs-purple); }
-.arrow { transition: transform 0.4s var(--ease-out); }
+.arrow { transition: transform var(--dur-2) var(--ease-out); }
 .card:hover .arrow, .card:focus-visible .arrow { transform: translateX(6px); }
 
 .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-4) var(--s-5); padding: var(--s-6) var(--pad) var(--s-8); border-top: 1px solid var(--line-on-light); font-size: 14px; color: var(--muted-on-light); }

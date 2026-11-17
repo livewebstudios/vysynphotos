@@ -16,7 +16,7 @@
   --label-track: 0.12em;
   --section: clamp(72px, 10vw, 152px);
   --hero-size: clamp(44px, calc((100vw - var(--pad) * 2) / 14.5), 168px);
-  --big-size: clamp(44px, calc((100vw - var(--pad) * 2) / 7.9), 260px);
+  --big-size: min(calc((100vw - var(--pad) * 2) / 7.9), 260px);
 }
 
 body.color-story {
@@ -64,7 +64,7 @@ section { padding-block: var(--section); }
   letter-spacing: var(--label-track);
   text-transform: uppercase;
   white-space: nowrap;
-  transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  transition: background-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
 }
 .btn-solid, .btn-talk, .btn-send { background: var(--vs-purple); border: 1px solid var(--vs-purple); color: var(--white); }
 .btn-solid:hover, .btn-solid:focus-visible, .btn-talk:hover, .btn-talk:focus-visible, .btn-send:hover, .btn-send:focus-visible { background: var(--vs-purple-deep); border-color: var(--vs-purple-deep); }
@@ -81,9 +81,9 @@ section { padding-block: var(--section); }
   letter-spacing: var(--label-track);
   text-transform: uppercase;
   color: var(--vs-purple);
-  transition: color 0.3s var(--ease-out);
+  transition: color var(--dur-1) var(--ease-out);
 }
-.arrow { flex: none; transition: transform 0.4s var(--ease-out); }
+.arrow { flex: none; transition: transform var(--dur-2) var(--ease-out); }
 .text-link:hover, .text-link:focus-visible { color: var(--vs-purple-deep); }
 .text-link:hover .arrow, .text-link:focus-visible .arrow { transform: translateX(6px); }
 
@@ -103,7 +103,7 @@ section { padding-block: var(--section); }
   border: 1px solid transparent;
   border-radius: 0;
   transform: translateX(-50%);
-  transition: top 0.5s var(--ease-out), width 0.5s var(--ease-out), height 0.5s var(--ease-out), border-radius 0.5s var(--ease-out), padding 0.5s var(--ease-out), background-color 0.5s var(--ease-out), border-color 0.5s var(--ease-out);
+  transition: top var(--dur-3) var(--ease-out), width var(--dur-3) var(--ease-out), height var(--dur-3) var(--ease-out), border-radius var(--dur-3) var(--ease-out), padding var(--dur-3) var(--ease-out), background-color var(--dur-3) var(--ease-out), border-color var(--dur-3) var(--ease-out);
 }
 .navbar.is-scrolled {
   top: 14px;
@@ -117,8 +117,8 @@ section { padding-block: var(--section); }
   border-radius: 999px;
 }
 .menu-open .navbar { top: 0; width: 100%; height: var(--bar); padding-inline: var(--pad); background: var(--white); border-color: transparent; border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
-.navbar-logo { position: relative; flex: none; display: block; width: 140px; height: 64px; transition: width 0.5s var(--ease-out), height 0.5s var(--ease-out); }
-.navbar-logo img { position: absolute; left: 0; top: 50%; transform: translateY(-50%); transition: opacity 0.35s var(--ease-out); }
+.navbar-logo { position: relative; flex: none; display: block; width: 140px; height: 64px; transition: width var(--dur-3) var(--ease-out), height var(--dur-3) var(--ease-out); }
+.navbar-logo img { position: absolute; left: 0; top: 50%; transform: translateY(-50%); transition: opacity var(--dur-1) var(--ease-out); }
 .navbar-logo .logo-full { width: 140px; max-width: none; }
 .navbar-logo .logo-mark { width: 32px; opacity: 0; }
 .navbar.is-scrolled .navbar-logo { width: 32px; height: 32px; }
@@ -140,7 +140,7 @@ section { padding-block: var(--section); }
   font-stretch: 110%;
   letter-spacing: 0.1em;
   white-space: nowrap;
-  transition: color 0.3s var(--ease-out);
+  transition: color var(--dur-1) var(--ease-out);
 }
 .navbar-link::after {
   content: "";
@@ -150,7 +150,7 @@ section { padding-block: var(--section); }
   background: var(--vs-purple);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s var(--ease-out);
+  transition: transform var(--dur-2) var(--ease-out);
 }
 .navbar-link:hover, .navbar-link:focus-visible { color: var(--vs-purple); }
 .navbar-link:hover::after, .navbar-link:focus-visible::after { transform: scaleX(1); }
@@ -168,7 +168,7 @@ section { padding-block: var(--section); }
   font-stretch: 125%;
   font-size: clamp(20px, 5.8vw, 40px);
   line-height: 1.05;
-  transition: color 0.3s var(--ease-out);
+  transition: color var(--dur-1) var(--ease-out);
 }
 .menu-link:hover, .menu-link:focus-visible { color: var(--vs-purple); }
 .menu-foot { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); margin-top: var(--s-6); }
@@ -275,7 +275,7 @@ section { padding-block: var(--section); }
 .story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); padding-block: var(--s-7); border-top: 1px solid var(--line-on-light); }
 .story-text { position: sticky; top: 22svh; align-self: start; container-type: inline-size; }
 /* The live series is in ink with its swatch at full length. The others step back, still readable. */
-.story-title, .swatch { transition: color 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+.story-title, .swatch { transition: color var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out); }
 .js .story:not(.is-active) .story-title { color: var(--muted-on-light); }
 .js .story:not(.is-active) .swatch { transform: scaleX(0.2); }
 .motion-failed .story .story-title { color: inherit !important; }
@@ -338,7 +338,7 @@ section { padding-block: var(--section); }
   background: var(--vs-purple);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform var(--dur-3) var(--ease-out);
 }
 .head:hover .ph::after { transform: scaleX(1); }
 @media (max-width: 899.98px) {
@@ -351,7 +351,7 @@ section { padding-block: var(--section); }
 /* ---------- 6. Case studies: horizontal accordion ---------- */
 .cases { padding-top: 0; }
 .acc { display: flex; height: 520px; margin-top: var(--s-7); border: 1px solid var(--line-on-light); }
-.acc-panel { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; overflow: hidden; border-left: 1px solid var(--line-on-light); transition: flex-grow 0.6s var(--ease-in-out), background-color 0.4s var(--ease-out); }
+.acc-panel { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; overflow: hidden; border-left: 1px solid var(--line-on-light); transition: flex-grow var(--dur-4) var(--ease-in-out), background-color var(--dur-2) var(--ease-out); }
 .acc-panel:first-child { border-left: 0; }
 .acc-panel.is-open { flex-grow: 3; }
 .acc-panel:not(.is-open):hover { background: var(--vs-wash); }
@@ -362,8 +362,8 @@ section { padding-block: var(--section); }
 .acc-title { font-weight: 800; font-stretch: 125%; font-size: clamp(22px, 2.2vw, 32px); line-height: 1; text-transform: uppercase; white-space: nowrap; }
 .acc-panel:not(.is-open) .acc-btn { position: absolute; inset: 0; flex-direction: column; align-items: flex-start; height: 100%; }
 .acc-panel:not(.is-open) .acc-title { writing-mode: vertical-rl; transform: rotate(180deg); margin-top: auto; }
-.acc-body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); min-height: 0; padding: 0 var(--s-5) var(--s-5); transition: opacity 0.5s var(--ease-out) 0.25s, visibility 0s; }
-.acc-panel:not(.is-open) .acc-body { opacity: 0; visibility: hidden; transition: opacity 0.15s var(--ease-out), visibility 0s linear 0.15s; }
+.acc-body { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); min-height: 0; padding: 0 var(--s-5) var(--s-5); transition: opacity var(--dur-3) var(--ease-out) 0.25s, visibility 0s; }
+.acc-panel:not(.is-open) .acc-body { opacity: 0; visibility: hidden; transition: opacity var(--dur-0) var(--ease-out), visibility 0s linear var(--dur-0); }
 .acc-copy { align-self: end; min-width: 0; }
 .acc-line { max-width: 30ch; margin-bottom: var(--s-3); color: var(--muted-on-light); }
 .acc-ground { display: grid; place-items: center; height: 100%; min-height: 0; padding: var(--s-4); background: var(--paper); }
@@ -376,7 +376,8 @@ section { padding-block: var(--section); }
   .acc-panel:not(.is-open) .acc-title { writing-mode: horizontal-tb; transform: none; margin-top: 0; }
   .acc-panel:not(.is-open) .acc-body { opacity: 1; visibility: visible; }
   .acc-btn { cursor: default; }
-  .acc-title { white-space: normal; }
+  .acc-title { white-space: normal; font-size: clamp(18px, 5.4vw, 28px); }
+  .acc-no { font-size: clamp(30px, 9vw, 44px); }
   .acc-body { grid-template-columns: 1fr; }
   .acc-ground { order: -1; height: auto; }
   .acc-photo { height: auto; width: min(100%, 300px); }
@@ -421,7 +422,7 @@ section { padding-block: var(--section); }
   gap: var(--s-5);
   padding: var(--s-6) var(--s-5);
   border-top: 1px solid var(--line-on-light);
-  transition: background-color 0.4s var(--ease-out);
+  transition: background-color var(--dur-2) var(--ease-out);
 }
 .jrow-no { font-size: var(--label-size); font-weight: 600; font-stretch: 110%; letter-spacing: var(--label-track); color: var(--vs-purple); }
 .jrow-title { font-weight: 600; font-size: clamp(22px, 2.6vw, 38px); line-height: 1.1; letter-spacing: -0.01em; }
@@ -450,7 +451,7 @@ section { padding-block: var(--section); }
 }
 .contact-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--s-8); margin-top: var(--s-7); }
 .contact-side .body { margin-top: 0; margin-bottom: var(--s-5); font-size: 19px; color: var(--text-on-light); }
-.contact-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: clamp(19px, 1.8vw, 24px); color: var(--vs-purple); border-bottom: 2px solid transparent; transition: border-color 0.3s var(--ease-out); }
+.contact-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: clamp(19px, 1.8vw, 24px); color: var(--vs-purple); border-bottom: 2px solid transparent; transition: border-color var(--dur-1) var(--ease-out); }
 .contact-link:hover, .contact-link:focus-visible { border-color: var(--vs-purple); }
 .contact-location { margin-top: var(--s-5); line-height: 1.8; color: var(--muted-on-light); }
 .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
@@ -467,7 +468,7 @@ section { padding-block: var(--section); }
   color: var(--text-on-light);
   font-size: 18px;
   line-height: 1.5;
-  transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  transition: border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
 }
 .field select {
   -webkit-appearance: none;
@@ -499,7 +500,7 @@ section { padding-block: var(--section); }
 .footer-logo img { width: 200px; }
 .footer-nav ul { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 0 var(--s-6); }
 .footer-social { display: flex; flex-direction: column; }
-.footer-link { display: inline-flex; align-items: center; min-height: 36px; font-size: var(--label-size); font-weight: 600; font-stretch: 110%; letter-spacing: var(--label-track); transition: color 0.3s var(--ease-out); }
+.footer-link { display: inline-flex; align-items: center; min-height: 36px; font-size: var(--label-size); font-weight: 600; font-stretch: 110%; letter-spacing: var(--label-track); transition: color var(--dur-1) var(--ease-out); }
 .footer-link:hover, .footer-link:focus-visible { color: var(--vs-purple); }
 .footer-location { margin-bottom: var(--s-3); font-size: var(--label-size); font-weight: 600; font-stretch: 110%; letter-spacing: var(--label-track); line-height: 1.8; color: var(--muted-on-light); }
 .footer-contact .footer-link { font-size: 17px; font-stretch: 100%; letter-spacing: 0; color: var(--vs-purple); }
@@ -516,3 +517,15 @@ section { padding-block: var(--section); }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-nav ul { grid-template-columns: 1fr; }
 }
+
+/* Sections whose heading stands without a label */
+.journal .h-display { margin-top: 0; }
+
+/* Touch: every link is at least 44px tall. In-page links stop clear of the floating pill. */
+@media (max-width: 1099.98px) {
+  .navbar-logo, .menu-open .navbar .navbar-logo { width: 44px; height: 44px; }
+  .navbar-logo img { left: 6px; }
+  .navbar.is-scrolled .navbar-logo { width: 44px; height: 44px; }
+  .footer-link { min-height: 44px; }
+}
+#work, #contact { scroll-margin-top: calc(var(--pill-h) + var(--s-6)); }

@@ -14,6 +14,7 @@
 
   /* ---------- Scroll helpers ---------- */
   VS.scrollTo = function (target) {
+    /* Lenis and native scrolling both respect scroll-margin-top, so a target never lands under a fixed bar. */
     if (VS.lenis) {
       VS.lenis.scrollTo(target, { duration: 1.1 });
     } else if (target === 0) {
@@ -101,7 +102,7 @@
     var done = $('.form-done');
     var messages = {
       name: { valueMissing: 'Add your name so I know who is writing.' },
-      email: { valueMissing: 'Add an email so I can write back.', typeMismatch: 'That email does not look right. Check it?' },
+      email: { valueMissing: 'Add an email so I can write back.', typeMismatch: 'That email doesn\u2019t look right. Check it?' },
       message: { valueMissing: 'Tell me a little about it first.' }
     };
 
