@@ -199,3 +199,6 @@ html.lenis, html.lenis body { height: auto; }
 @media print {
   .demo-bar { display: none; }
 }
+
+/* The header stays above the open menu so the MENU button can close it. */
+.menu-open [data-header] { z-index: calc(var(--z-menu) + 1); }
