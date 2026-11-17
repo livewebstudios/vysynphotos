@@ -26,6 +26,9 @@ a:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--vs-purple)
 h1 { max-width: 16ch; margin-top: var(--s-4); font-weight: 500; font-size: clamp(36px, 5.4vw, 68px); line-height: 1.06; letter-spacing: -0.02em; }
 h1 em { font-family: var(--font-display); font-style: italic; font-weight: 400; letter-spacing: 0; color: var(--vs-purple); }
 .intro-line { max-width: 52ch; margin-top: var(--s-5); color: var(--muted-on-light); }
+.intro-note { max-width: 46ch; margin-top: var(--s-5); padding: var(--s-3) var(--s-5); border: 1px solid var(--vs-lilac); border-radius: 999px; font-size: 15px; line-height: 1.5; color: var(--text-on-light); }
+.intro-note strong { font-weight: 600; color: var(--vs-purple); }
+@media (max-width: 599.98px) { .intro-note { border-radius: 16px; } }
 
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: clamp(48px, 7vw, 88px); }
 .card-item { animation: rise 0.9s var(--ease-out) both; }

@@ -4,7 +4,7 @@ Three home page directions for the new VySyn Photography site, plus a landing pa
 
 Pages: `index.html` (landing), `noir/` (1 Gallery Noir), `editorial/` (2 Editorial), `color-story/` (3 Color Story).
 
-These are demos, noindex, not the launch site. Nav links go nowhere on purpose, the form does not send, and the small demo bar comes out before launch.
+These are demos, noindex, not the launch site. Nav links go nowhere on purpose, the form does not send.
 
 Static HTML, CSS and vanilla JS. No build step. GSAP, ScrollTrigger and Lenis are vendored in `assets/js/vendor/`.
 
